@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!-- 这里是一个总控制器-->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 初始化applicationContext.xml文件-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/classes/applicationContext.xml</param-value>
+		</init-param>
+		<!-- 容器启动时调用这个servlet -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 这里的配置信息就是把后缀为*.do的请求都丢给总控制器来分发-->
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/views/AdminLogin.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
